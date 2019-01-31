@@ -51,10 +51,13 @@ set(srcs AdditionalMessage.cpp
 	XmlOutputterHook.cpp
 )
 
+add_definitions(-DCPPUNIT_BUILD_DLL)
+
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/..)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../include)
 
 add_library(cppunit_dll SHARED ${srcs})
 add_library(cppunit STATIC ${srcs})
-set_target_properties(${RTM_PROJECT_NAME} PROPERTIES DEBUG_POSTFIX d)
+set_target_properties(cppunit_dll PROPERTIES DEBUG_POSTFIX d)
+set_target_properties(cppunit PROPERTIES DEBUG_POSTFIX d)
 
